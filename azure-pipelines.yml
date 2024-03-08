@@ -1,0 +1,29 @@
+name: Next DevOps Pipeline
+
+trigger:
+    branches:
+      include:
+        - main
+
+pool:
+  vmImage: windows-2022
+
+pr: [main]
+
+stages:
+  
+  
+  - stage: build
+    displayName: "Build"
+    jobs:
+      - job: Build
+        displayName: "Build"
+        steps:
+          - task:  NodeTool@0
+            inputs:
+              versionSpec: '20.x'
+            displayName: 'Install Node.js'
+          
+          - script: |
+              npm ci
+              npm build
