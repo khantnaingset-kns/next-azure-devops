@@ -6,7 +6,7 @@ trigger:
         - main
 
 pool:
-  vmImage: windows-2022
+  vmImage: ubuntu:latest
 
 pr: [main]
 
