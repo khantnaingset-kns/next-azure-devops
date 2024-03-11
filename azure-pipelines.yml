@@ -5,9 +5,6 @@ trigger:
       include:
         - main
 
-pool:
-  vmImage: ubuntu:latest
-
 pr: [main]
 
 stages:
