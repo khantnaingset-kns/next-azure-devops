@@ -4,7 +4,9 @@ trigger:
     branches:
       include:
         - main
-        - khant/**
+
+pool:
+  vmImage: ubuntu:latest
 
 pr: [main]
 
