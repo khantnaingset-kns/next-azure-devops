@@ -6,9 +6,13 @@ trigger:
         - main
 
 pool:
-  vmImage: windows-2022
+  vmImage: ubuntu-latest
 
 pr: [main]
+
+variables:
+  SENTRY_AUTH_TOKEN: 
+    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
 
 stages:
   
@@ -26,4 +30,5 @@ stages:
           
           - script: |
               npm ci
-              npm build
+              npm run build
+              echo 'Sentry Auth Token $SENTRY_AUTH_TOKEN'
