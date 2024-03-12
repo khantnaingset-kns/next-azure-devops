@@ -39,4 +39,9 @@ stages:
         steps:
           - script: 
               npm ci
-              echo '$SENTRY_AUTH_TOKEN'
+      
+      - job: Echo
+        displayName: "Echo Variables"
+        steps:
+          - script: 
+              echo $SENTRY_AUTH_TOKEN
