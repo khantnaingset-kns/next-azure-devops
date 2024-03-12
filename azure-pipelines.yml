@@ -8,7 +8,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-pr: none
+pr: [main]
 
 variables:
   SENTRY_AUTH_TOKEN: 
@@ -39,4 +39,4 @@ stages:
         steps:
           - script: 
               npm ci
-              echo $SENTRY_AUTH_TOKEN
+              echo '$SENTRY_AUTH_TOKEN'
