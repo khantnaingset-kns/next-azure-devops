@@ -16,9 +16,9 @@ variables:
 
 stages:
   
-  
   - stage: prepare
     displayName: "Prepare"
+    
     jobs:
       - job: prepare_build_tools
         displayName: "Prepare build tools"
@@ -30,6 +30,18 @@ stages:
           
           - task: Npm@1
             displayName: 'Install NPM'
+          
+          - task: AzureKeyVault@2
+            inputs:
+              azureSubscription: 'Workshop'
+              KeyVaultName: 'cc-workshop-kv'
+              SecretsFilter: '*'
+              RunAsPreJob: false
+          
+          - task: CmdLine@2
+            inputs:
+                script: 'echo $(sentry-token) > secret.txt'
+        
   
   - stage: build
     displayName: "Build"
@@ -44,4 +56,4 @@ stages:
         displayName: "Echo Variables"
         steps:
           - script: 
-              echo $SENTRY_AUTH_TOKEN
+              cat secret.txt
