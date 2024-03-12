@@ -33,7 +33,7 @@ stages:
           
           - task: AzureKeyVault@2
             inputs:
-              azureSubscription: 'workshop_connection'
+              azureSubscription: 'workshop-connection'
               KeyVaultName: 'cc-workshop-kv'
               SecretsFilter: '*'
               RunAsPreJob: false
