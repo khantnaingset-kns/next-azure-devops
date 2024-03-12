@@ -17,18 +17,26 @@ variables:
 stages:
   
   
-  - stage: build
-    displayName: "Build"
+  - stage: prepare
+    displayName: "Prepare"
     jobs:
-      - job: Build
-        displayName: "Build"
+      - job: prepare_build_tools
+        displayName: "Prepare build tools"
         steps:
           - task:  NodeTool@0
             inputs:
               versionSpec: '20.x'
             displayName: 'Install Node.js'
           
-          - script: |
+          - task: Npm@1
+            displayName: 'Install NPM'
+  
+  - stage: build
+    displayName: "Build"
+    jobs:
+      - job: install
+        displayName: "NPM Install"
+        steps:
+          - script: 
               npm ci
-              npm run build
-              echo 'Sentry Auth Token $SENTRY_AUTH_TOKEN'
+              echo $SENTRY_AUTH_TOKEN
