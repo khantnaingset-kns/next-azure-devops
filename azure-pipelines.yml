@@ -8,7 +8,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-pr: [main]
+pr: none
 
 variables:
   SENTRY_AUTH_TOKEN: 
